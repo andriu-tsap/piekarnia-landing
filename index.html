@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piekarnia Zakwas — chleb na zakwasie, Sosnowiec</title>
+<meta name="description" content="Rzemieślnicza piekarnia w Sosnowcu. Chleb na naturalnym zakwasie, drożdżówki i kawa. Zamów online i odbierz bez kolejki.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#menu">Przejdź do menu</a>
+
+<header class="top">
+  <a href="#" class="logo" aria-label="Piekarnia Zakwas — strona główna">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="22" rx="17" ry="12" fill="#F2C14E"/><path d="M9 20c3-3 6-3 8 0M17 18c3-3 6-3 8 0M25 20c2-2 4-2 6 0" stroke="#1F3A34" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+    <span>Zakwas</span>
+  </a>
+  <nav aria-label="Główna nawigacja">
+    <a href="#menu">Menu</a>
+    <a href="#zamow">Zamów</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <span class="status" id="status" aria-live="polite"></span>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-text">
+    <h1>Chleb wyjmujemy z pieca o&nbsp;5:30. Do&nbsp;południa zwykle go&nbsp;nie ma.</h1>
+    <p>Pieczemy na naturalnym zakwasie, który dokarmiamy od 2014 roku. Zamów wieczorem, a rano odbierzesz bochenek bez kolejki.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#zamow">Zamów na jutro</a>
+      <a class="btn btn-ghost" href="#menu">Zobacz menu</a>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 360">
+      <ellipse cx="210" cy="300" rx="190" ry="26" fill="#173029"/>
+      <path d="M40 230C40 130 120 80 210 80s170 50 170 150c0 40-40 60-170 60S40 270 40 230z" fill="#E8A93A"/>
+      <path d="M60 225C60 140 130 100 210 100s150 40 150 125c0 30-36 48-150 48S60 255 60 225z" fill="#F2C14E"/>
+      <g stroke="#B57A1E" stroke-width="9" stroke-linecap="round" fill="none">
+        <path d="M110 170c25-30 55-30 75 0"/><path d="M175 150c25-30 55-30 75 0"/><path d="M240 170c25-30 50-30 70 0"/>
+      </g>
+      <g fill="#FFF6DC" opacity=".8"><circle cx="120" cy="215" r="3"/><circle cx="160" cy="235" r="2.5"/><circle cx="230" cy="225" r="3"/><circle cx="290" cy="210" r="2.5"/><circle cx="260" cy="245" r="2"/><circle cx="190" cy="205" r="2"/></g>
+    </svg>
+    <div class="steam"><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<section class="facts" aria-label="O piekarni">
+  <div><strong>48 h</strong><span>fermentuje każde ciasto</span></div>
+  <div><strong>3 składniki</strong><span>mąka, woda, sól. Bez polepszaczy</span></div>
+  <div><strong>ul. Warszawska 14</strong><span>2 minuty od dworca Sosnowiec Główny</span></div>
+</section>
+
+<section id="menu" class="menu">
+  <h2>Co dziś pieczemy</h2>
+  <div class="tabs" role="tablist" aria-label="Kategorie menu">
+    <button role="tab" aria-selected="true" data-cat="chleby">Chleby</button>
+    <button role="tab" aria-selected="false" data-cat="slodkie">Słodkie</button>
+    <button role="tab" aria-selected="false" data-cat="kawa">Kawa i napoje</button>
+  </div>
+  <ul class="menu-list" id="menu-list" role="tabpanel"></ul>
+</section>
+
+<section id="zamow" class="order">
+  <div class="order-intro">
+    <h2>Zamów na jutro rano</h2>
+    <p>Zamówienia przyjmujemy do 20:00. Płacisz przy odbiorze, gotówką lub kartą.</p>
+  </div>
+  <form id="order-form" class="order-form" novalidate>
+    <fieldset>
+      <legend>Twoje pieczywo</legend>
+      <div id="order-items" class="order-items"></div>
+    </fieldset>
+    <div class="row">
+      <label>Imię
+        <input name="name" autocomplete="given-name" required>
+      </label>
+      <label>Telefon
+        <input name="phone" type="tel" autocomplete="tel" placeholder="np. 600 100 200" required pattern="[0-9 +]{9,15}">
+      </label>
+    </div>
+    <label>Godzina odbioru
+      <select name="time" required>
+        <option value="">Wybierz godzinę</option>
+        <option>6:00 – 7:00</option><option>7:00 – 8:00</option><option>8:00 – 9:00</option><option>9:00 – 10:00</option>
+      </select>
+    </label>
+    <div class="summary">
+      <span>Razem</span>
+      <strong id="total">0,00 zł</strong>
+    </div>
+    <p class="form-error" id="form-error" role="alert"></p>
+    <button class="btn btn-primary" type="submit">Złóż zamówienie</button>
+  </form>
+  <div class="confirm" id="confirm" hidden tabindex="-1">
+    <h3>Zamówienie przyjęte</h3>
+    <p id="confirm-text"></p>
+    <button class="btn btn-ghost" id="new-order" type="button">Złóż kolejne zamówienie</button>
+  </div>
+</section>
+
+<section id="kontakt" class="contact">
+  <div>
+    <h2>Gdzie nas znaleźć</h2>
+    <address>ul. Warszawska 14<br>41-200 Sosnowiec<br><a href="tel:+48600100200">600 100 200</a></address>
+  </div>
+  <table class="hours" aria-label="Godziny otwarcia">
+    <tbody id="hours-body"></tbody>
+  </table>
+</section>
+</main>
+
+<footer class="foot">
+  <p>Piekarnia Zakwas to projekt koncepcyjny: marka i dane są fikcyjne.</p>
+  <p>Projekt i kod: <a href="https://andriu-tsap.github.io">Andrii Tsap</a></p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
